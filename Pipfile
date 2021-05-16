@@ -13,6 +13,8 @@ mysqlclient = "*"
 python-decouple = "*"
 
 [dev-packages]
+autopep8 = "*"
+yapf = "*"
 
 [requires]
 python_version = "3.8"
