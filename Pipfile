@@ -9,6 +9,8 @@ djangorestframework = "*"
 celery = "==3.1.18"
 django-debug-toolbar = "*"
 pillow = "*"
+mysqlclient = "*"
+python-decouple = "*"
 
 [dev-packages]
 
