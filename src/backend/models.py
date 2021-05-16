@@ -16,13 +16,13 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         unique=True,
         error_messages={'unique': ("A user with that Email address already exists")})
 
-    phone_regex = RegexValidator(regex=r"^\+(?:[0-9]●?){6,14}[0-9]$", message=(
+    phone_regex = RegexValidator(regex=r"^(?:[0-9]●?){6,14}[0-9]$", message=(
         "Enter a valid international mobile phone number starting with +(country code)"))
 
     Mob_Number = models.CharField(
         "Phone Number ",
         validators=[phone_regex],
-        max_length=15,
+        max_length=20,
         unique=True,
         error_messages={'unique': (
             "A user with that Phone Number address already exists")},
