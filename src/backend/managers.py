@@ -1,5 +1,4 @@
 from django.contrib.auth.base_user import BaseUserManager
-from django.contrib.auth.hashers import make_password
 
 
 class UserManager(BaseUserManager):
@@ -27,8 +26,8 @@ class UserManager(BaseUserManager):
         """
         extra_fields.setdefault('is_superuser', False)
         user = self._create_user(
-            Email,
-            Mob_Number,
+            Email=Email,
+            Mob_Number=Mob_Number,
             password=password,
 
         )
@@ -44,8 +43,8 @@ class UserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('SuperUser must have is_superuser =True')
         user = self._create_user(
-            Email,
-            Mob_Number,
+            Email=Email,
+            Mob_Number=Mob_Number,
             password=password,
 
         )
