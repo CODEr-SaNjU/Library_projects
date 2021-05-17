@@ -1,10 +1,7 @@
 from django.contrib import admin
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from .forms import UserProfileCreationForm, UserProfileChangeForm
-from .models import UserProfile
-# Register your models here.
+from .models import UserProfile, BookAdd, Bookinfo, BookAuthor, BookCategory
 
 
 class UserProfileAdmin(UserAdmin):
@@ -29,3 +26,7 @@ class UserProfileAdmin(UserAdmin):
 
 
 admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(BookAdd)
+admin.site.register(Bookinfo)
+admin.site.register(BookAuthor)
+admin.site.register(BookCategory)
