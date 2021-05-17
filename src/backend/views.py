@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import permissions
+from .models import Bookinfo
+from .serializers import BookInfoSerializer
 
-# Create your views here.
 
-
-def Dashobard(request):
-    return render(request, 'Books_html/main.htm')
+class BookListApiview(APIView):
+    pass
