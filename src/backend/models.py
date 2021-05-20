@@ -85,7 +85,7 @@ class BookCategory(models.Model):
 
 class BookCode(models.Model):
     Book_Ifsc = models.CharField(
-        "Book Ifsc Number", max_length=150,)
+        "Book Ifsc Number", max_length=13,)
 
     def __str__(self):
         return self.Book_Ifsc

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'backend',
     'debug_toolbar',
     'frontend',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

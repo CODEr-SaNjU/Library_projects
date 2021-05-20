@@ -5,6 +5,8 @@ from .models import Bookinfo, BookCode, BookAdd, BookAuthor, BookCategory, BookP
 
 
 class BookInfoSerializer(serializers.ModelSerializer):
+    # Bookinfos = serializers.StringRelatedField(many=True)
+
     class Meta:
-        model = Bookinfo
-        fields = "__all__"
+        model = BookAdd
+        fields = ('Book_Name',)
