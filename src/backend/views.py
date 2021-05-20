@@ -1,8 +1,19 @@
+from django.db.models import query
 from django.shortcuts import render
+from rest_framework import generics, viewsets
 from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import permissions
+from .models import Bookinfo
+from .serializers import BookInfoSerializer
 
-# Create your views here.
 
+class BookListApiview(generics.ListAPIView):
+    """
+    list of all book and create a new snippet
+    """
 
-def Dashobard(request):
-    return render(request, 'Books_html/main.htm')
+    queryset = Bookinfo.objects.all()
+    serializer_class = BookInfoSerializer

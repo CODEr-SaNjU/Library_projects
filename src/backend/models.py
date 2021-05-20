@@ -5,7 +5,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.db.models.fields.related import ForeignKey
 from .managers import UserManager
-from django.utils import timezone
+from django.utils import timezone, tree
 from django.core.validators import RegexValidator
 
 
@@ -60,20 +60,41 @@ class BookAdd(models.Model):
         return self.Book_Name
 
 
+class BookPublication(models.Model):
+    Book_Publication = models.CharField("Book Publication", max_length=250)
+
+    def __str__(self):
+        return self.Book_Publication
+
+
 class BookAuthor(models.Model):
     Book_Name = models.ForeignKey(
         BookAdd, verbose_name="Books Name", on_delete=models.CASCADE)
     Book_Author = models.CharField("Book Authors Name ", max_length=200)
 
     def __str__(self):
-        return self.Book_Author.__str__()
+        return self.Book_Author
 
 
 class BookCategory(models.Model):
     Book_Category = models.CharField("Book Category ", max_length=150)
 
     def __str__(self):
-        return self.Book_Category.__str__()
+        return self.Book_Category
+
+
+class BookCode(models.Model):
+    Book_Ifsc = models.CharField(
+        "Book Ifsc Number", max_length=13,)
+
+    def __str__(self):
+        return self.Book_Ifsc
+
+
+STATUS = (
+    (0, "Yes"),
+    (1, "No")
+)
 
 
 class Bookinfo(models.Model):
@@ -83,6 +104,14 @@ class Bookinfo(models.Model):
         BookAuthor, verbose_name="Book Author Name ", on_delete=models.CASCADE)
     Book_Category = models.ForeignKey(
         BookCategory, verbose_name="Book Category Type", on_delete=models.CASCADE)
+    Book_Ifsc = models.ForeignKey(
+        BookCode, verbose_name="Book Ifsc Number", on_delete=models.CASCADE)
+    Issued_Date = models.DateField(
+        "Issued Date", auto_now=False, auto_now_add=False)
+    Availability_Status = models.IntegerField(
+        "Availability Status", choices=STATUS, default=1)
+    Book_Publication = models.ForeignKey(
+        BookPublication, verbose_name="Book Publication", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.Book_Name.__str__()

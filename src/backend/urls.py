@@ -1,6 +1,8 @@
+from django.db import router
 from django.urls import path, include
-from . import views
+from .views import (BookListApiview)
 
 urlpatterns = [
-    path('', views.Dashobard, name="dashboard"),
+    path('', BookListApiview.as_view()),
+
 ]
